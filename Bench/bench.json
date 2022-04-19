@@ -1,0 +1,171 @@
+[
+  {
+    "Name":"Normal",
+    "PublishParams":[
+      "-c","Release",
+      "-r","win-x64",
+      "--self-contained","false"
+    ],
+    "EnvVariables":{
+      "DOTNET_gcServer":"1",
+      "DOTNET_gcConcurrent":"1"
+    }
+  },
+  {
+    "Name":"Normal-WksGC",
+    "PublishParams":[
+      "-c","Release",
+      "-r","win-x64",
+      "--self-contained","false"
+    ],
+    "EnvVariables":{
+      "DOTNET_gcServer":"0",
+      "DOTNET_gcConcurrent":"0"
+    }
+  },
+  {
+    "Name": "Normal_PGO",
+    "PublishParams": [
+      "-c","Release",
+      "-r","win-x64",
+      "--self-contained","false"
+    ],
+    "EnvVariables": {
+      "DOTNET_ReadyToRun": "0",
+      "DOTNET_TieredPGO": "1",
+      "DOTNET_TC_QuickJitForLoops": "1",
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "Normal_PGO_OSR",
+    "PublishParams": [
+      "-c","Release",
+      "-r","win-x64",
+      "--self-contained","false"
+    ],
+    "EnvVariables": {
+      "DOTNET_ReadyToRun": "0",
+      "DOTNET_TieredPGO": "1",
+      "DOTNET_TC_QuickJitForLoops": "1",
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1",
+      "DOTNET_TC_OnStackReplacement":"1"
+    }
+  },
+  {
+    "Name": "Normal_PGO_OSR_OSA",
+    "PublishParams": [
+      "-c","Release",
+      "-r","win-x64",
+      "--self-contained","false"
+    ],
+    "EnvVariables": {
+      "DOTNET_ReadyToRun": "0",
+      "DOTNET_TieredPGO": "1",
+      "DOTNET_TC_QuickJitForLoops": "1",
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1",
+      "DOTNET_TC_OnStackReplacement":"1",
+      "DOTNET_JitObjectStackAllocation":"1"
+    }
+  },
+  {
+    "Name": "SingleFilePublish",
+    "PublishParams": [
+      "-c","Release",
+      "-p:PublishSingleFile=true",
+      "--self-contained","false",
+      "-r","win-x64"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "SingleFilePublish-SelfContained",
+    "PublishParams": [
+      "-c","Release",
+      "-p:PublishSingleFile=true",
+      "--self-contained","true",
+      "-r","win-x64"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "SingleFilePublish-SelfContained-Trim",
+    "PublishParams": [
+      "-c","Release",
+      "-p:PublishSingleFile=true",
+      "--self-contained","true",
+      "-r","win-x64",
+      "-p:PublishTrimmed=true"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "SingleFilePublish-SelfContained-Compress",
+    "PublishParams": [
+      "-c","Release",
+      "-p:PublishSingleFile=true",
+      "--self-contained","true",
+      "-r","win-x64",
+      "-p:EnableCompressionInSingleFile=true"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "SingleFilePublish-SelfContained-Trim-Compress",
+    "PublishParams": [
+      "-c","Release",
+      "-p:PublishSingleFile=true",
+      "--self-contained","true",
+      "-r","win-x64",
+      "-p:EnableCompressionInSingleFile=true",
+      "-p:PublishTrimmed=true"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "AOT-Size",
+    "CsProjectName":"SingleFilePublish-AOT",
+    "PublishParams": [
+      "-c","Release",
+      "--self-contained","true",
+      "-r","win-x64",
+      "-p:IlcOptimizationPreference=Size"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  },
+  {
+    "Name": "AOT-Speed",
+    "CsProjectName":"SingleFilePublish-AOT",
+    "PublishParams": [
+      "-c","Release",
+      "--self-contained","true",
+      "-r","win-x64",
+      "-p:IlcOptimizationPreference=Speed"
+    ],
+    "EnvVariables": {
+      "DOTNET_gcServer": "1",
+      "DOTNET_gcConcurrent": "1"
+    }
+  }
+]
